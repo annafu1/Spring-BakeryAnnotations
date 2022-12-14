@@ -20,19 +20,19 @@ public class MuffinController {
         return new ResponseEntity<>(service.index(), HttpStatus.OK);
     }
     @RequestMapping(value = "/muffins/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Muffin> show(Long id) {
+    public ResponseEntity<Muffin> show(@PathVariable Long id) {
         return new ResponseEntity<>(service.show(id), HttpStatus.OK);
     }
     @RequestMapping(value = "/muffins/", method = RequestMethod.POST)
-    public ResponseEntity<Muffin> create(Muffin baker) {
+    public ResponseEntity<Muffin> create(@RequestBody Muffin baker) {
         return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
     }
     @RequestMapping(value = "/muffins/update/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Muffin> update(Long id,Muffin baker) {
+    public ResponseEntity<Muffin> update(@PathVariable Long id, @RequestBody Muffin baker) {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
     @RequestMapping(value = "/muffins/destroy/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> destroy(Long id) {
+    public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }
